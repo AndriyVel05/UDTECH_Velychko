@@ -34,16 +34,6 @@ class BasePage:
         element.clear()
         element.send_keys(text)
     
-    def wait_for_element_visible(self, locator, timeout=None):
-        wait_time = timeout if timeout else self.timeout
-        try:
-            WebDriverWait(self.driver, wait_time).until(
-                EC.visibility_of_element_located(locator)
-            )
-            return True
-        except TimeoutException:
-            return False
-    
     def is_element_present(self, locator, timeout=None):
         wait_time = timeout if timeout else self.timeout
         try:
@@ -54,26 +44,9 @@ class BasePage:
         except TimeoutException:
             return False
     
-    def wait_for_element_to_disappear(self, locator, timeout=None):
-        wait_time = timeout if timeout else self.timeout
-        try:
-            WebDriverWait(self.driver, wait_time).until_not(
-                EC.presence_of_element_located(locator)
-            )
-            return True
-        except TimeoutException:
-            return False
-    
     def get_current_url(self):
         return self.driver.current_url
-    
-    def execute_script(self, script, *args):
-        return self.driver.execute_script(script, *args)
     
     def click_with_js(self, locator, timeout=None):
         element = self.find_element(locator, timeout)
         self.driver.execute_script("arguments[0].click();", element)
-    
-    def scroll_to_element(self, locator, timeout=None):
-        element = self.find_element(locator, timeout)
-        self.driver.execute_script("arguments[0].scrollIntoView(true);", element)
