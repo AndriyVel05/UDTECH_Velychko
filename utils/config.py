@@ -11,8 +11,6 @@ class Config:
     BASE_URL = "https://events.shooters.global/"
     DEFAULT_TIMEOUT = 10
     EXTENDED_TIMEOUT = 30
-    BUILDER_LOAD_TIMEOUT = 60
-    BROWSER = "chrome"
     HEADLESS = False
     EMAIL = os.getenv("EMAIL")
     PASSWORD = os.getenv("PASSWORD")

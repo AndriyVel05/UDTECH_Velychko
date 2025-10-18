@@ -10,8 +10,8 @@ class BuilderPage(BasePage):
     
     def is_user_logged_in(self):
         try:
-            print(f"Current URL: {self.get_current_url()}")
-            print("Checking if user is logged in (looking for 'Touch Screen Mode' text)...")
+            print(f"✓ Current URL: {self.get_current_url()}")
+            print("✓ Checking if user is logged in (looking for 'Touch Screen Mode' text)...")
             
             if self.is_element_present(BuilderPageLocators.TOUCH_SCREEN_MODE_TEXT, timeout=Config.EXTENDED_TIMEOUT):
                 print("✓ 'Touch Screen Mode' text found - user is logged in to builder!")
@@ -24,9 +24,9 @@ class BuilderPage(BasePage):
             print(f"✗ Error checking login status: {e}")
             return False
     
-    def click_dropdown_menu(self):
+    def logout(self):
         try:
-            print("Clicking dropdown menu...")
+            print("✓ Clicking dropdown menu...")
             self.click(BuilderPageLocators.DROPDOWN_MENU_TRIGGER, timeout=Config.EXTENDED_TIMEOUT)
             print("✓ Dropdown menu clicked")
             import time
@@ -48,29 +48,22 @@ class BuilderPage(BasePage):
                     time.sleep(1)
                 except:
                     raise Exception("Could not click dropdown menu with any method")
-    
-    def click_logout(self):
+        
         try:
-            print("Clicking logout button...")
+            print("✓ Clicking logout button...")
             
             if self.is_element_present(BuilderPageLocators.LOGOUT_BUTTON, timeout=10):
                 self.click_with_js(BuilderPageLocators.LOGOUT_BUTTON)
                 print("✓ Logout button clicked (button)")
-                return
-            
-            if self.is_element_present(BuilderPageLocators.LOGOUT_BUTTON_CONFIRM, timeout=5):
+            elif self.is_element_present(BuilderPageLocators.LOGOUT_BUTTON_CONFIRM, timeout=5):
                 self.click_with_js(BuilderPageLocators.LOGOUT_BUTTON_CONFIRM)
-                print("✓ Logout button clicked (p element)")
-                return
-            
-            print("✗ Logout button not found")
+                print("✓ Logout button clicked (confirm)")
+            else:
+                print("✗ Logout button not found")
             
         except Exception as e:
             print(f"✗ Error clicking logout: {e}")
             raise
-    
-    def logout(self):
-        self.click_dropdown_menu()
-        self.click_logout()
+        
         import time
         time.sleep(2)
