@@ -46,7 +46,3 @@ class BasePage:
     
     def get_current_url(self):
         return self.driver.current_url
-    
-    def click_with_js(self, locator, timeout=None):
-        element = self.find_element(locator, timeout)
-        self.driver.execute_script("arguments[0].click();", element)

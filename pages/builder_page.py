@@ -25,45 +25,14 @@ class BuilderPage(BasePage):
             return False
     
     def logout(self):
-        try:
-            print("✓ Clicking dropdown menu...")
-            self.click(BuilderPageLocators.DROPDOWN_MENU_TRIGGER, timeout=Config.EXTENDED_TIMEOUT)
-            print("✓ Dropdown menu clicked")
-            import time
-            time.sleep(1)
-        except Exception as e:
-            print(f"Normal click failed, trying JavaScript: {e}")
-            try:
-                self.click_with_js(BuilderPageLocators.DROPDOWN_MENU_TRIGGER)
-                print("✓ Dropdown menu clicked with JavaScript")
-                import time
-                time.sleep(1)
-            except Exception as e2:
-                print(f"✗ Failed to click dropdown menu: {e2}")
-                try:
-                    print("Trying alternative dropdown locator...")
-                    self.click_with_js(BuilderPageLocators.DROPDOWN_MENU)
-                    print("✓ Dropdown menu clicked (alternative)")
-                    import time
-                    time.sleep(1)
-                except:
-                    raise Exception("Could not click dropdown menu with any method")
+        print("✓ Clicking dropdown menu...")
+        self.click(BuilderPageLocators.DROPDOWN_MENU_TRIGGER, timeout=Config.EXTENDED_TIMEOUT)
+        print("✓ Dropdown menu clicked")
         
-        try:
-            print("✓ Clicking logout button...")
-            
-            if self.is_element_present(BuilderPageLocators.LOGOUT_BUTTON, timeout=10):
-                self.click_with_js(BuilderPageLocators.LOGOUT_BUTTON)
-                print("✓ Logout button clicked (button)")
-            elif self.is_element_present(BuilderPageLocators.LOGOUT_BUTTON_CONFIRM, timeout=5):
-                self.click_with_js(BuilderPageLocators.LOGOUT_BUTTON_CONFIRM)
-                print("✓ Logout button clicked (confirm)")
-            else:
-                print("✗ Logout button not found")
-            
-        except Exception as e:
-            print(f"✗ Error clicking logout: {e}")
-            raise
-        
-        import time
-        time.sleep(2)
+        print("✓ Clicking logout button...")
+        if self.is_element_present(BuilderPageLocators.LOGOUT_BUTTON, timeout=Config.DEFAULT_TIMEOUT):
+            self.click(BuilderPageLocators.LOGOUT_BUTTON, timeout=Config.EXTENDED_TIMEOUT)
+            print("✓ Logout button clicked")
+        elif self.is_element_present(BuilderPageLocators.LOGOUT_BUTTON_CONFIRM, timeout=Config.DEFAULT_TIMEOUT):
+            self.click(BuilderPageLocators.LOGOUT_BUTTON_CONFIRM, timeout=Config.EXTENDED_TIMEOUT)
+            print("✓ Logout button clicked (alternative locator)")
