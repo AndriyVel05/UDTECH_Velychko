@@ -42,7 +42,7 @@ class BuilderPage(BasePage):
                 print(f"✗ Failed to click dropdown menu: {e2}")
                 try:
                     print("Trying alternative dropdown locator...")
-                    self.click_with_js(BuilderPageLocators.DROPDOWN_MENU_ALT)
+                    self.click_with_js(BuilderPageLocators.DROPDOWN_MENU)
                     print("✓ Dropdown menu clicked (alternative)")
                     import time
                     time.sleep(1)
@@ -58,8 +58,8 @@ class BuilderPage(BasePage):
                 print("✓ Logout button clicked (button)")
                 return
             
-            if self.is_element_present(BuilderPageLocators.LOGOUT_BUTTON_ALT, timeout=5):
-                self.click_with_js(BuilderPageLocators.LOGOUT_BUTTON_ALT)
+            if self.is_element_present(BuilderPageLocators.LOGOUT_BUTTON_CONFIRM, timeout=5):
+                self.click_with_js(BuilderPageLocators.LOGOUT_BUTTON_CONFIRM)
                 print("✓ Logout button clicked (p element)")
                 return
             

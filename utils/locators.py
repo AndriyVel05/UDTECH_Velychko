@@ -15,6 +15,6 @@ class LoginPageLocators:
 class BuilderPageLocators:
     TOUCH_SCREEN_MODE_TEXT = (By.XPATH, "//*[contains(text(), 'Touch Screen Mode')]")
     DROPDOWN_MENU_TRIGGER = (By.XPATH, "//button[@id='radix-vue-dropdown-menu-trigger-v-2-0']")
-    DROPDOWN_MENU_ALT = (By.CSS_SELECTOR, "button[id*='dropdown-menu-trigger']")
+    DROPDOWN_MENU = (By.CSS_SELECTOR, "button[id*='dropdown-menu-trigger']")
     LOGOUT_BUTTON = (By.XPATH, "//button[text()='Log Out']")
-    LOGOUT_BUTTON_ALT = (By.XPATH, "//p[text()='Log Out']")
+    LOGOUT_BUTTON_CONFIRM = (By.XPATH, "//p[text()='Log Out']")
