@@ -1,0 +1,31 @@
+AQA task
+
+1. Go to SITE
+2. Verify on the page by waiting for locator for 10 seconds COOKIESOKBUTTON
+3. Click COOKIESOKBUTTON button
+4. Click BUILDFORFREEBUTTON 
+5. Verify on the page by waiting for locator for 10 seconds EMAILFIELD
+6. Fill in EMAILFIELD
+7. Fill in PASSWORDFIELD
+8. Click on SIGNINBUTTON
+9. Verify modal appeared by waiting for locator for 10 seconds LIMITEDTABLETSUPPORTBATTENAFTERSIGNIN
+10. Verify on the page by waiting for 10 seconds for 10 seconds for element BUTTONPROFILEAVATAR
+11. Click BUTTONPROFILEAVATAR
+12. Click BUTTONLOGOUT
+13. Click BUTTONLOGOUTAGAIN
+14. Verify on the correct page by waiting for 10 seconds for locator BUILDFORFREEBUTTON
+
+TEARDOWN:
+1. Leave Readme file with instructions to launch (short)
+2. Leave brief file in which shortly describe difficulties during development
+2. Send to Github remote
+
+Technologies:
+1. Python
+2. Selenium
+
+Pattern: Page Object
+
+Rules:
+1. No comments allowed
+2. Any dfferent actions except of basic flow I described here
