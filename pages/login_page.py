@@ -1,7 +1,7 @@
 from pages.base_page import BasePage
 from utils.locators import LoginPageLocators
 from utils.config import Config
-
+from utils.locators import BuilderPageLocators
 
 class LoginPage(BasePage):
     
@@ -13,21 +13,17 @@ class LoginPage(BasePage):
             self.enter_text(LoginPageLocators.EMAIL_FIELD, email, timeout=Config.EXTENDED_TIMEOUT)
             self.enter_text(LoginPageLocators.PASSWORD_FIELD, password)
             self.click(LoginPageLocators.SIGN_IN_BUTTON)
-            
-            import time
-            time.sleep(2)
+            self.wait_for_page_load()
             
             try:
                 if self.is_element_present(LoginPageLocators.OK_BUTTON_AFTER_LOGIN, timeout=Config.EXTENDED_TIMEOUT):
                     self.click(LoginPageLocators.OK_BUTTON_AFTER_LOGIN, timeout=Config.DEFAULT_TIMEOUT)
                     print("✓ OK button clicked after login")
-                    time.sleep(3)
+                    self.is_element_present(BuilderPageLocators.TOUCH_SCREEN_MODE_TEXT, timeout=Config.EXTENDED_TIMEOUT)
                 else:
                     print("✓ OK button not present, proceeding...")
-                    time.sleep(2)
             except Exception as e:
                 print(f"OK button not found or not clickable: {e}")
-                time.sleep(2)
             
             return True
         except Exception as e:

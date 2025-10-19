@@ -12,7 +12,7 @@ class HomePage(BasePage):
     def open(self):
         self.open_url(self.url)
     
-    def click_build_for_free(self):
+    def click_build_for_free_button(self):
         self.click(HomePageLocators.BUILD_FOR_FREE_BUTTON, timeout=Config.EXTENDED_TIMEOUT)
     
     def is_build_for_free_button_visible(self):

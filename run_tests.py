@@ -9,4 +9,4 @@ if __name__ == "__main__":
         "--tb=short"
     ])
     
-    sys.exit(exit_code)
+sys.exit(exit_code)

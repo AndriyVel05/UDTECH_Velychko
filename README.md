@@ -41,3 +41,4 @@ utils/          - Configuration and utilities
 - Chrome browser
 - Selenium WebDriver
 - pytest
+

@@ -44,5 +44,20 @@ class BasePage:
         except TimeoutException:
             return False
     
+    def is_element_clickable(self, locator, timeout=None):
+        wait_time = timeout if timeout else self.timeout
+        try:
+            WebDriverWait(self.driver, wait_time).until(
+                EC.element_to_be_clickable(locator)
+            )
+            return True
+        except TimeoutException:
+            return False
+    
     def get_current_url(self):
         return self.driver.current_url
+    
+    def wait_for_page_load(self, timeout=None):
+        wait_time = timeout if timeout else 2
+        import time
+        time.sleep(wait_time)
